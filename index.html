@@ -3,36 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Antes y después · 1993 – 2012</title>
-  <link rel="stylesheet" href="style.css">
+  <title>1993 – 2012</title>
+  <link rel="stylesheet" href="comparador.css">
 </head>
-<body>
-  <main class="pagina">
-    <h1 class="titulo">Del 21 de marzo de 1993 al 9 de abril de 2012</h1>
-    <p class="subtitulo">Desliza para ver cómo pasó el tiempo.</p>
+<body class="cmp-body">
+  <main class="cmp-pagina">
+    <h1 class="cmp-titulo">Del 21 de marzo de 1993 al 9 de abril de 2012</h1>
+    <p class="cmp-subtitulo">Desliza para ver cómo pasó el tiempo</p>
 
-    <div class="comparador" id="comparador">
-      <!-- Imagen de fondo (después, 2012) -->
-      <img class="img img-despues" src="2012.jpg" alt="Los padres con sus tres hijos, 9 de abril de 2012" draggable="false">
+    <div class="cmp-slider" id="cmpSlider">
+      <img class="cmp-img" src="2012.jpg" alt="Los padres con sus tres hijos, 9 de abril de 2012" draggable="false">
 
-      <!-- Imagen superior recortada (antes, 1993) -->
-      <div class="capa-antes" id="capaAntes">
-        <img class="img img-antes" src="1993.jpg" alt="Los padres, 21 de marzo de 1993" draggable="false">
+      <div class="cmp-capa" id="cmpCapa">
+        <img class="cmp-img" src="1993.jpg" alt="Los padres, 21 de marzo de 1993" draggable="false">
       </div>
 
-      <span class="etiqueta etiqueta-antes">21 · 03 · 1993</span>
-      <span class="etiqueta etiqueta-despues">09 · 04 · 2012</span>
+      <span class="cmp-fecha cmp-fecha-izq">21 · 03 · 1993</span>
+      <span class="cmp-fecha cmp-fecha-der">09 · 04 · 2012</span>
 
-      <div class="asa" id="asa">
-        <span class="linea"></span>
-        <span class="boton" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg>
+      <div class="cmp-asa">
+        <span class="cmp-linea"></span>
+        <span class="cmp-boton">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg>
         </span>
       </div>
 
-      <input class="rango" id="rango" type="range" min="0" max="100" value="50" aria-label="Comparar las dos fotos">
+      <input class="cmp-rango" id="cmpRango" type="range" min="0" max="100" value="50" aria-label="Comparar las dos fotos">
     </div>
   </main>
-  <script src="script.js"></script>
+  <script src="comparador.js"></script>
 </body>
 </html>
