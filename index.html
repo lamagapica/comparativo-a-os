@@ -4,7 +4,106 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>1993 – 2012</title>
-  <link rel="stylesheet" href="comparador.css">
+  <style>
+.cmp-body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  box-sizing: border-box;
+  background: #0d1729;
+  color: #f3efe6;
+  font-family: Georgia, "Times New Roman", serif;
+}
+.cmp-body *, .cmp-body *::before, .cmp-body *::after { box-sizing: border-box; }
+
+.cmp-pagina { width: 100%; max-width: 920px; text-align: center; }
+.cmp-titulo { margin: 0; font-size: clamp(1.3rem, 3.6vw, 2.1rem); font-weight: 400; }
+.cmp-subtitulo { margin: 8px 0 24px; opacity: .65; font-style: italic; }
+
+.cmp-slider {
+  --pos: 50%;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;      /* ajusta a la proporción de tus fotos */
+  overflow: hidden;
+  border-radius: 8px;
+  background: #000;
+  user-select: none;
+  -webkit-user-select: none;
+  box-shadow: 0 24px 60px rgba(0,0,0,.55);
+}
+.cmp-img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.cmp-capa {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+}
+
+.cmp-asa {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: var(--pos);
+  width: 0;
+  pointer-events: none;
+}
+.cmp-linea {
+  position: absolute;
+  top: 0; bottom: 0; left: -1px;
+  width: 2px;
+  background: #e8c36a;
+}
+.cmp-boton {
+  position: absolute;
+  top: 50%; left: 0;
+  transform: translate(-50%, -50%);
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: #e8c36a;
+  color: #0d1729;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,.5);
+}
+
+.cmp-fecha {
+  position: absolute;
+  bottom: 14px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  background: rgba(0,0,0,.6);
+  color: #fff;
+  font-size: .85rem;
+  pointer-events: none;
+}
+.cmp-fecha-izq { left: 14px; }
+.cmp-fecha-der { right: 14px; }
+
+/* control invisible que recibe ratón, dedo y teclado */
+.cmp-rango {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  margin: 0; padding: 0;
+  opacity: 0;
+  cursor: ew-resize;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+.cmp-slider:focus-within .cmp-boton { outline: 3px solid #fff; outline-offset: 3px; }
+
+</style>
 </head>
 <body class="cmp-body">
   <main class="cmp-pagina">
@@ -12,10 +111,10 @@
     <p class="cmp-subtitulo">Desliza para ver cómo pasó el tiempo</p>
 
     <div class="cmp-slider" id="cmpSlider">
-      <img class="cmp-img" src="2012.jpg" alt="Los padres con sus tres hijos, 9 de abril de 2012" draggable="false">
+      <img class="cmp-img" src="Familia 2012.png" alt="Los padres con sus tres hijos, 9 de abril de 2012" draggable="false">
 
       <div class="cmp-capa" id="cmpCapa">
-        <img class="cmp-img" src="1993.jpg" alt="Los padres, 21 de marzo de 1993" draggable="false">
+        <img class="cmp-img" src="Padres 1993.png" alt="Los padres, 21 de marzo de 1993" draggable="false">
       </div>
 
       <span class="cmp-fecha cmp-fecha-izq">21 · 03 · 1993</span>
@@ -31,6 +130,17 @@
       <input class="cmp-rango" id="cmpRango" type="range" min="0" max="100" value="50" aria-label="Comparar las dos fotos">
     </div>
   </main>
-  <script src="comparador.js"></script>
+  <script>
+const slider = document.getElementById('cmpSlider');
+const rango = document.getElementById('cmpRango');
+
+function actualizar() {
+  slider.style.setProperty('--pos', rango.value + '%');
+}
+
+rango.addEventListener('input', actualizar);
+actualizar();
+
+</script>
 </body>
 </html>
