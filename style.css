@@ -1,76 +1,97 @@
-:root {
-  --fondo: #1d2a2f;
-  --texto: #f3efe6;
-  --acento: #e8c36a;
-  --pos: 50%;
-}
-* { box-sizing: border-box; margin: 0; }
-body {
+.cmp-body {
+  margin: 0;
   min-height: 100vh;
-  background: var(--fondo);
-  color: var(--texto);
-  font-family: Georgia, "Times New Roman", serif;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 24px 16px;
+  box-sizing: border-box;
+  background: #0d1729;
+  color: #f3efe6;
+  font-family: Georgia, "Times New Roman", serif;
 }
-.pagina { width: 100%; max-width: 900px; text-align: center; }
-.titulo { font-size: clamp(1.3rem, 3.5vw, 2rem); font-weight: 400; letter-spacing: .01em; }
-.subtitulo { margin: 8px 0 22px; opacity: .7; font-style: italic; }
+.cmp-body *, .cmp-body *::before, .cmp-body *::after { box-sizing: border-box; }
 
-.comparador {
+.cmp-pagina { width: 100%; max-width: 920px; text-align: center; }
+.cmp-titulo { margin: 0; font-size: clamp(1.3rem, 3.6vw, 2.1rem); font-weight: 400; }
+.cmp-subtitulo { margin: 8px 0 24px; opacity: .65; font-style: italic; }
+
+.cmp-slider {
+  --pos: 50%;
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;          /* cambia si tus fotos tienen otra proporción */
+  aspect-ratio: 4 / 3;      /* ajusta a la proporción de tus fotos */
   overflow: hidden;
-  border-radius: 6px;
+  border-radius: 8px;
   background: #000;
   user-select: none;
-  touch-action: pan-y;
-  box-shadow: 0 20px 50px rgba(0,0,0,.45);
+  -webkit-user-select: none;
+  box-shadow: 0 24px 60px rgba(0,0,0,.55);
 }
-.img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.capa-antes {
-  position: absolute; inset: 0;
+.cmp-img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.cmp-capa {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   clip-path: inset(0 calc(100% - var(--pos)) 0 0);
 }
 
-.asa {
-  position: absolute; top: 0; bottom: 0;
+.cmp-asa {
+  position: absolute;
+  top: 0; bottom: 0;
   left: var(--pos);
   width: 0;
   pointer-events: none;
 }
-.linea {
-  position: absolute; top: 0; bottom: 0; left: -1px;
-  width: 2px; background: var(--acento);
+.cmp-linea {
+  position: absolute;
+  top: 0; bottom: 0; left: -1px;
+  width: 2px;
+  background: #e8c36a;
 }
-.boton {
-  position: absolute; top: 50%; left: 0;
+.cmp-boton {
+  position: absolute;
+  top: 50%; left: 0;
   transform: translate(-50%, -50%);
-  width: 46px; height: 46px; border-radius: 50%;
-  background: var(--acento); color: #1d2a2f;
-  display: grid; place-items: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,.4);
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: #e8c36a;
+  color: #0d1729;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,.5);
 }
 
-.etiqueta {
-  position: absolute; bottom: 14px;
-  padding: 5px 10px; border-radius: 3px;
-  background: rgba(0,0,0,.55); color: #fff;
-  font-size: .85rem; pointer-events: none;
+.cmp-fecha {
+  position: absolute;
+  bottom: 14px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  background: rgba(0,0,0,.6);
+  color: #fff;
+  font-size: .85rem;
+  pointer-events: none;
 }
-.etiqueta-antes { left: 14px; }
-.etiqueta-despues { right: 14px; }
+.cmp-fecha-izq { left: 14px; }
+.cmp-fecha-der { right: 14px; }
 
-/* input invisible que gestiona ratón, táctil y teclado */
-.rango {
-  position: absolute; inset: 0;
+/* control invisible que recibe ratón, dedo y teclado */
+.cmp-rango {
+  position: absolute;
+  top: 0; left: 0;
   width: 100%; height: 100%;
-  opacity: 0; cursor: ew-resize;
-  margin: 0;
-  -webkit-appearance: none; appearance: none;
+  margin: 0; padding: 0;
+  opacity: 0;
+  cursor: ew-resize;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
 }
-.rango::-webkit-slider-thumb { -webkit-appearance: none; width: 46px; height: 100vh; }
-.rango::-moz-range-thumb { width: 46px; height: 100vh; border: 0; }
-.comparador:focus-within .boton { outline: 3px solid #fff; outline-offset: 3px; }
+.cmp-slider:focus-within .cmp-boton { outline: 3px solid #fff; outline-offset: 3px; }
