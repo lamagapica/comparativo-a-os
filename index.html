@@ -2,37 +2,37 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Comparador de fotos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Antes y después · 1993 – 2012</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <main class="pagina">
+    <h1 class="titulo">Del 21 de marzo de 1993 al 9 de abril de 2012</h1>
+    <p class="subtitulo">Desliza para ver cómo pasó el tiempo.</p>
 
-  <div class="container">
-    <div class="slider-container" id="slider">
-      <!-- Imagen Antes (2012) -->
-      <img src="2012 04 09.png" alt="Familia 2012" class="img-before">
-      <div class="badge badge-before">9 de abril de 2012</div>
+    <div class="comparador" id="comparador">
+      <!-- Imagen de fondo (después, 2012) -->
+      <img class="img img-despues" src="2012.jpg" alt="Los padres con sus tres hijos, 9 de abril de 2012" draggable="false">
 
-      <!-- Imagen Después (1993) -->
-      <div class="img-after-wrapper" id="afterWrapper">
-        <img src="1993 03 21.png" alt="Padres 1993" class="img-after">
-        <div class="badge badge-after">21 de marzo de 1993</div>
+      <!-- Imagen superior recortada (antes, 1993) -->
+      <div class="capa-antes" id="capaAntes">
+        <img class="img img-antes" src="1993.jpg" alt="Los padres, 21 de marzo de 1993" draggable="false">
       </div>
 
-      <!-- Control de deslizamiento (Handle) -->
-      <div class="handle" id="handle">
-        <div class="handle-line"></div>
-        <div class="handle-button">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-            <path d="M8.5 17l-5-5 5-5v10zm7 0l5-5-5-5v10z"/>
-          </svg>
-        </div>
-        <div class="handle-line"></div>
+      <span class="etiqueta etiqueta-antes">21 · 03 · 1993</span>
+      <span class="etiqueta etiqueta-despues">09 · 04 · 2012</span>
+
+      <div class="asa" id="asa">
+        <span class="linea"></span>
+        <span class="boton" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg>
+        </span>
       </div>
+
+      <input class="rango" id="rango" type="range" min="0" max="100" value="50" aria-label="Comparar las dos fotos">
     </div>
-  </div>
-
+  </main>
   <script src="script.js"></script>
 </body>
 </html>
