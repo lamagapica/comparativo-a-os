@@ -1,8 +1,8 @@
-const comparador = document.getElementById('comparador');
-const rango = document.getElementById('rango');
+const slider = document.getElementById('cmpSlider');
+const rango = document.getElementById('cmpRango');
 
 function actualizar() {
-  comparador.style.setProperty('--pos', rango.value + '%');
+  slider.style.setProperty('--pos', rango.value + '%');
 }
 
 rango.addEventListener('input', actualizar);
